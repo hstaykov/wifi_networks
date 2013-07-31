@@ -5,121 +5,116 @@
 			Wifi manager
 		</title>
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		<meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0"
+		/>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
-				
+																												
 		</script>
 		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js">
-												
+																					
 		</script>
 		<script src="https://cdn.firebase.com/v0/firebase.js">
-								
+																															
 		</script>
 		<style>
 			html, body, #map-canvas { margin: 0; padding: 0; height: 100%; }
 		</style>
 		<script type="text/javascript" src="googleMaps.js">
-								
+																															
+		</script>
+		<script type='text/javascript' src='respond.min.js'>
+																				
 		</script>
 	</head>
 	<body>
-		<header id="page_header">
-			<h2>
-				Wifi manager
-			</h2>
-			<nav id="page_navigation">
-				<ul>
-					<li>
-						Home
-					</li>
-					<li>
-						Something
-					</li>
-					<li>
-						Something else
-					</li>
-				</ul>
-			</nav>
-		</header>
-		
-		<section id="wifis_section">
-			Here stays the wifi data
-			<table id="resultsTable" border="1">
-				<thead>
-					<tr>
-						<th>
-							Name
-						</th>
-						<th>
-							Password
-						</th>
-						<th>
-							Comment
-						</th>
-					</tr>
-				</thead>
-				<tbody data-bind="foreach: wifis">
-					<tr>
-						<td data-bind="text: name">
-						</td>
-						<td data-bind="text: password">
-						</td>
-						<td data-bind="text: comment">
-						</td>
-					</tr>
-				</tbody>
-				</tbody>
-			</table>
-		</section>
-		<div id="map-canvas">
-		</div>
-		<section id="add_wifi_form_section">
-			From here we add new wifi
-			<form data-bind="submit: addWifi">
-				Wifi Name:
-				<input data-bind="value: newWifiName" placeholder="Wifi name" />
-				Wifi Password:
-				<input data-bind="value: newWifiPassword" placeholder="Wifi password" />
-				Comment:
-				<input data-bind="value: newWifiComment" placeholder="Some comment" />
-				<button type="submit">
-					Add
-				</button>
-			</form>
-		</section>
-		<section id="sidebar">
-			<header>
-				<h3>
-					Other things
-				</h3>
-				<nav>
+		<div id="wrapper">
+			<header id="page_header">
+				<h2>
+					Wifi manager
+				</h2>
+				<nav id="page_navigation">
 					<ul>
 						<li>
-							1
-						</li>
-						<li>
-							2
-						</li>
-						<li>
-							3
-						</li>
-						<li>
-							4
-						</li>
-						<li>
-							5
+							<a href="#" title="Home">Home</a>
 						</li>
 					</ul>
 				</nav>
+				<div id="banner">
+					<img src="images/banner.jpg" alt="banner" />
+				</div>
 			</header>
-		</section>
-		<footer id="page_footer">
-			<p>
-				asdfghjkl;
-			</p>
-		</footer>
-		<script type="text/javascript" src="koWifiNetwork.js">
-								
-		</script>
+			<section id="wifis_section">
+				<h1>
+					Main Wifi section
+				</h1>
+				<p>
+					<table id="resultsTable" border="1" class="table_class">
+						<thead>
+							<tr>
+								<th>
+									Name
+								</th>
+								<th>
+									Password
+								</th>
+								<th>
+									Comment
+								</th>
+							</tr>
+						</thead>
+						<tbody data-bind="foreach: wifis">
+							<tr>
+								<td data-bind="text: name">
+								</td>
+								<td data-bind="text: password">
+								</td>
+								<td data-bind="text: comment">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</P>
+				<p>
+					From here we add new wifi
+					<form data-bind="submit: addWifi" id="add_wifi_form">
+						<fieldset>
+							<p>
+								Wifi Name:
+								<input data-bind="value: newWifiName" placeholder="Wifi name" class="text" />
+							</p>
+							<p>
+								Wifi Password:
+								<input data-bind="value: newWifiPassword" placeholder="Wifi password" class="text"
+								/>
+							</p>
+							<p>
+								Comment:
+								<input data-bind="value: newWifiComment" placeholder="Some comment" class="text"
+								/>
+							</p>
+							<p>
+								<button type="submit" id="registerNew">
+									Add
+								</button>
+							</p>
+						</fieldset>
+					</form>
+				</p>
+			</section>
+			<div id="map-canvas">
+			</div>
+			<aside>
+				<h1>
+					Sub-section
+				</h1>
+				<p>
+					Lorem
+				</p>
+			</aside>
+			<script type="text/javascript" src="koWifiNetwork.js">
+																																										
+			</script>
+		</div>
 	</body>
 
 </html>

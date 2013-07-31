@@ -18,24 +18,28 @@ function WifiListViewModel() {
 
     console.log("Wer are in th viewModel");
     dataRef.on("child_added", function(dbResult) {
-       var result = eval(dbResult.val());
-       console.log(result);
-       self.wifis.push(result);
+        var result = eval(dbResult.val());
+        console.log(result);
+        self.wifis.push(result);
     });
 
 
     // Operations
     self.addWifi = function() {
         console.log("We are adding element");
-        
+
         var newWifi = new Wifi({
             name: this.newWifiName(),
             password: this.newWifiPassword(),
             comment: this.newWifiComment()
         });
-       // self.wifis.push(newWifi);
+        // self.wifis.push(newWifi);
 
-        dataRef.push({name: newWifi.name(), password: newWifi.password(), comment: newWifi.comment()});
+        dataRef.push({
+            name: newWifi.name(),
+            password: newWifi.password(),
+            comment: newWifi.comment()
+        });
         // Cleaning the form fields
         self.newWifiName("");
         self.newWifiPassword("");
