@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Wifi manager
+		</title>
+		<!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js">
+						
+		</script>
+		<script src="https://cdn.firebase.com/v0/firebase.js">
+		</script>
+	</head>
+	<header id="page_header">
+		<h2>
+			Wifi manager
+		</h2>
+		<nav id="page_navigation">
+			<ul>
+				<li>
+					Home
+				</li>
+				<li>
+					Something
+				</li>
+				<li>
+					Something else
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<section id="wifis_section">
+		Here stays the wifi data
+		<table id="resultsTable" border="1">
+			<thead>
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Password
+					</th>
+					<th>
+						Comment
+					</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: wifis">
+				<tr>
+					<td data-bind="text: name">
+					</td>
+					<td data-bind="text: password">
+					</td>
+					<td data-bind="text: comment">
+					</td>
+				</tr>
+			</tbody>
+			</tbody>
+		</table>
+	</section>
+	<section id="add_wifi_form_section">
+		From here we add new wifi
+		<form data-bind="submit: addWifi">
+			Wifi Name:
+			<input data-bind="value: newWifiName" placeholder="Wifi name" />
+			Wifi Password:
+			<input data-bind="value: newWifiPassword" placeholder="Wifi password" />
+			Comment:
+			<input data-bind="value: newWifiComment" placeholder="Some comment" />
+			<button type="submit">
+				Add
+			</button>
+		</form>
+	</section>
+	<section id="sidebar">
+		<header>
+			<h3>
+				Other things
+			</h3>
+			<nav>
+				<ul>
+					<li>
+						1
+					</li>
+					<li>
+						2
+					</li>
+					<li>
+						3
+					</li>
+					<li>
+						4
+					</li>
+					<li>
+						5
+					</li>
+				</ul>
+			</nav>
+		</header>
+	</section>
+	<footer id="page_footer">
+		<p>
+			asdfghjkl;
+		</p>
+	</footer>
+	<script type="text/javascript" src="koWifiNetwork.js">
+			
+	</script>
+
+</html>
