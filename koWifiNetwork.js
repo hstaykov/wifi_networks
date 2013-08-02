@@ -18,11 +18,14 @@ function WifiListViewModel() {
     self.newWifiComment = ko.observable();
     self.newWifiIpAddress = ko.observable();
 
+    //Other variables
+
+
 
     console.log("Wer are in th viewModel");
     dataRef.on("child_added", function(dbResult) {
         var result = eval(dbResult.val());
-        console.log(result);
+        // console.log(result);
         self.wifis.push(result);
     });
 
@@ -52,7 +55,16 @@ function WifiListViewModel() {
             self.newWifiPassword("");
             self.newWifiComment("");
             self.newWifiIpAddress("");
+            $("#errorAdd").html("");
         }
+        else{
+            $("#errorAdd").html("This IP is not correct...");
+        }
+    };
+
+    self.downloadClick = function() {
+        
+
     };
 
 }
@@ -61,7 +73,7 @@ function ValidateIPaddress(ipaddress) {
     if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress)) {
         return (true)
     }
-  
+
     return (false)
 }
 

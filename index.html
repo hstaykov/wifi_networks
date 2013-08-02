@@ -2,9 +2,11 @@
 <html>
 	<head>
 		<title>
-			Wifi manager
+			Wifi Register
 		</title>
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 		<meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0"
 		/>
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -33,11 +35,11 @@
   				autoOpen: false,
   				show: {
   				effect: "blind",
-  				duration: 1000
+  				duration: 700
   				},
   			hide: {
-  			effect: "explode",
-  			duration: 1000
+  			effect: "fold",
+  			duration: 700
   			}
   		});
 
@@ -51,12 +53,15 @@
 		<div id="wrapper">
 			<header id="page_header">
 				<h2>
-					Wifi manager
+					Wifi Register (Alpha)
 				</h2>
 				<nav id="page_navigation">
 					<ul>
 						<li>
-							<a href="#" title="Home" id="add">Add WIFI</a>
+							<a href="#" title="Home" id="add" class="pure-button pure-button-active" >Add WIFI</a>
+						</li>
+						<li>
+							<a href="#" title="Home" id="downdload"  class="pure-button pure-button-active" data-bind='click: downloadClick'>Download as JSON</a>
 						</li>
 					</ul>
 				</nav>
@@ -101,8 +106,8 @@
 					</table>
 				</P>
 				<p>
-					<div id="addWifiDiv" hidden>
-						From here we add new wifi
+					<div id="addWifiDiv" hidden title="Add new wifi network">
+						<div id="errorAdd" style="color: red"></div>
 						<form data-bind="submit: addWifi" id="add_wifi_form">
 							<fieldset>
 								<p>
