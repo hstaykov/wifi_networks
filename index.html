@@ -7,23 +7,44 @@
 		<link rel="stylesheet" type="text/css" href="styles.css">
 		<meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0"
 		/>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">
-																												
+																																		
 		</script>
 		<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js">
-																					
+																											
 		</script>
 		<script src="https://cdn.firebase.com/v0/firebase.js">
-																															
+																																					
 		</script>
 		<style>
 			html, body, #map-canvas { margin: 0; padding: 0; height: 100%; }
 		</style>
 		<script type="text/javascript" src="googleMaps.js">
-																															
+																																					
 		</script>
 		<script type='text/javascript' src='respond.min.js'>
-																				
+																										
+		</script>
+		<script>
+		  $(function() {
+  			$("#addWifiDiv").dialog({
+  				autoOpen: false,
+  				show: {
+  				effect: "blind",
+  				duration: 1000
+  				},
+  			hide: {
+  			effect: "explode",
+  			duration: 1000
+  			}
+  		});
+
+	  	$("#add").click(function() {
+	  		$("#addWifiDiv").dialog("open");
+	  	});
+	  });
 		</script>
 	</head>
 	<body>
@@ -35,7 +56,7 @@
 				<nav id="page_navigation">
 					<ul>
 						<li>
-							<a href="#" title="Home">Home</a>
+							<a href="#" title="Home" id="add">Add WIFI</a>
 						</li>
 					</ul>
 				</nav>
@@ -58,6 +79,9 @@
 									Password
 								</th>
 								<th>
+									IP
+								</th>
+								<th>
 									Comment
 								</th>
 							</tr>
@@ -68,6 +92,8 @@
 								</td>
 								<td data-bind="text: password">
 								</td>
+								<td data-bind="text: ipaddress">
+								</td>
 								<td data-bind="text: comment">
 								</td>
 							</tr>
@@ -75,44 +101,45 @@
 					</table>
 				</P>
 				<p>
-					From here we add new wifi
-					<form data-bind="submit: addWifi" id="add_wifi_form">
-						<fieldset>
-							<p>
-								Wifi Name:
-								<input data-bind="value: newWifiName" placeholder="Wifi name" class="text" />
-							</p>
-							<p>
-								Wifi Password:
-								<input data-bind="value: newWifiPassword" placeholder="Wifi password" class="text"
-								/>
-							</p>
-							<p>
-								Comment:
-								<input data-bind="value: newWifiComment" placeholder="Some comment" class="text"
-								/>
-							</p>
-							<p>
-								<button type="submit" id="registerNew">
-									Add
-								</button>
-							</p>
-						</fieldset>
-					</form>
+					<div id="addWifiDiv" hidden>
+						From here we add new wifi
+						<form data-bind="submit: addWifi" id="add_wifi_form">
+							<fieldset>
+								<p>
+									Wifi Name:
+									<input data-bind="value: newWifiName" placeholder="Wifi name" class="text" />
+								</p>
+								<p>
+									Wifi Password:
+									<input data-bind="value: newWifiPassword" placeholder="Wifi password" class="text"
+									/>
+								</p>
+								<p>
+									Ip Addres:
+									<input data-bind="value: newWifiIpAddress" placeholder="IP Address" class="text"
+									/>
+								</p>
+								<p>
+									Comment:
+									<input data-bind="value: newWifiComment" placeholder="Some comment" class="text"
+									/>
+								</p>
+								<p>
+									<button type="submit" id="registerNew">
+										Add
+									</button>
+								</p>
+							</fieldset>
+						</form>
+					</div>
 				</p>
 			</section>
 			<div id="map-canvas">
 			</div>
 			<aside>
-				<h1>
-					Sub-section
-				</h1>
-				<p>
-					Lorem
-				</p>
 			</aside>
 			<script type="text/javascript" src="koWifiNetwork.js">
-																																										
+																																																			
 			</script>
 		</div>
 	</body>

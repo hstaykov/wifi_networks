@@ -3,6 +3,7 @@ function Wifi(data) {
     this.name = ko.observable(data.name);
     this.password = ko.observable(data.password);
     this.comment = ko.observable(data.comment);
+    this.ipaddress = ko.observable(data.ipaddress);
 }
 
 
@@ -15,6 +16,8 @@ function WifiListViewModel() {
     self.newWifiName = ko.observable();
     self.newWifiPassword = ko.observable();
     self.newWifiComment = ko.observable();
+    self.newWifiIpAddress = ko.observable();
+
 
     console.log("Wer are in th viewModel");
     dataRef.on("child_added", function(dbResult) {
@@ -28,25 +31,38 @@ function WifiListViewModel() {
     self.addWifi = function() {
         console.log("We are adding element");
 
-        var newWifi = new Wifi({
-            name: this.newWifiName(),
-            password: this.newWifiPassword(),
-            comment: this.newWifiComment()
-        });
-        // self.wifis.push(newWifi);
+        if (ValidateIPaddress(this.newWifiIpAddress())) {
 
-        dataRef.push({
-            name: newWifi.name(),
-            password: newWifi.password(),
-            comment: newWifi.comment()
-        });
-        // Cleaning the form fields
-        self.newWifiName("");
-        self.newWifiPassword("");
-        self.newWifiComment("");
+            var newWifi = new Wifi({
+                name: this.newWifiName(),
+                password: this.newWifiPassword(),
+                comment: this.newWifiComment(),
+                ipaddress: this.newWifiIpAddress()
+            });
+            // self.wifis.push(newWifi);
+
+            dataRef.push({
+                name: newWifi.name(),
+                password: newWifi.password(),
+                comment: newWifi.comment(),
+                ipaddress: newWifi.ipaddress()
+            });
+            // Cleaning the form fields
+            self.newWifiName("");
+            self.newWifiPassword("");
+            self.newWifiComment("");
+            self.newWifiIpAddress("");
+        }
     };
 
 }
 
+function ValidateIPaddress(ipaddress) {
+    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress)) {
+        return (true)
+    }
+  
+    return (false)
+}
 
 ko.applyBindings(new WifiListViewModel());
